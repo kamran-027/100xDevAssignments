@@ -4,7 +4,18 @@
 */
 
 function isPalindrome(str) {
-  return true;
+  var newStr = str.replace(/[^\w\s]/gi, "");
+  let strArr = newStr.toLowerCase().split(" ").join("").split("");
+  let reverseStr = [];
+  for (let i = strArr.length - 1; i >= 0; i--) {
+    reverseStr.push(strArr[i]);
+  }
+  if (strArr.join("") === reverseStr.join("")) {
+    return true;
+  }
+  return false;
 }
+
+isPalindrome("Eva, can I see bees in a cave?");
 
 module.exports = isPalindrome;
