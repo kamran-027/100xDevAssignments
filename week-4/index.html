@@ -14,22 +14,31 @@
       const titleDiv = document.createElement("div");
       const descDiv = document.createElement("div");
       const buttonDone = document.createElement("button")
+      const buttonEdit = document.createElement("button")
+      const buttonDelete = document.createElement("button")
 
       childDiv.setAttribute("id", todo.id)
       titleDiv.innerHTML = todo.title;
       descDiv.innerHTML = todo.descripton;
       buttonDone.setAttribute("onclick", `handleTodoStatus(${todo.id})`)
+      buttonEdit.setAttribute("onclick", `updateTodo(${todo.id})`)
+      buttonDelete.setAttribute("onclick", `removeTodoFromDom(${todo.id})`)
       buttonDone.innerHTML = todo.completed ? "Done" : "Mark as done"
+      buttonEdit.innerHTML = "Edit";
+      buttonDelete.innerHTML = "Delete";
+      buttonEdit.setAttribute("style", `margin:10px`)
 
       childDiv.appendChild(titleDiv)
       childDiv.appendChild(descDiv)
       childDiv.appendChild(buttonDone)
+      childDiv.appendChild(buttonEdit)
+      childDiv.appendChild(buttonDelete)
 
       parent.appendChild(childDiv)
     }
 
-    function removeTodoFromDom(todo) {
-      const element = document.getElementById(todo.id);
+    function removeTodoFromDom(id) {
+      const element = document.getElementById(id);
       element.remove();
     }
 
@@ -75,7 +84,7 @@
       })
 
       deleted.map((obj) => {
-        removeTodoFromDom(obj)
+        removeTodoFromDom(obj.id)
       })
 
       updated.map((obj) => {
@@ -95,6 +104,16 @@
         id: globalId++,
       });
       updateState(todoState);
+      document.getElementById("title").value = ""
+      document.getElementById("description").value = ""
+    }
+
+    function updateTodo(id) {
+      const element = document.getElementById(id);
+      const title = document.getElementById("title")
+      const description = document.getElementById("description")
+      title.value = element.children[0].innerHTML
+      description.value = element.children[1].innerHTML
     }
 
     async function getTodos() {
@@ -112,7 +131,7 @@
   <input type="text" id="title" placeholder="Todo title" /> <br /><br />
   <input type="text" id="description" placeholder="Todo description" />
   <br /><br />
-  <button onclick="addTodo()">Add todo</button>
+  <button onclick="addTodo()" id="addTodo">Add todo</button>
   <button onclick="getTodos()">Get todos</button>
   <br />
   <br />
