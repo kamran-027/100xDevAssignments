@@ -1,19 +1,27 @@
 import React from "react";
 import "./Card.css";
 
-const Card = () => {
+const Card = (props) => {
+  const { title, description, interests, linkedin, twitter } = props.item;
+
   return (
     <div className="card">
-      <h1>Title</h1>
-      <p>Desc</p>
+      <h1>{title}</h1>
+      <p>{description}</p>
       <h3>Interests</h3>
       <ul>
-        <li>A</li>
-        <li>B</li>
-        <li>C</li>
+        {interests?.map((i, key) => {
+          return <li key={key}>{i}</li>;
+        })}
       </ul>
-      <button>LinkedIn</button>
-      <button>Twitter</button>
+      <div className="social-media-btns">
+        <a href={linkedin} target="_blank">
+          <button>LinkedIn</button>
+        </a>
+        <a href={twitter} target="_blank">
+          <button>Twitter</button>
+        </a>
+      </div>
     </div>
   );
 };

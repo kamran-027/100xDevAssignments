@@ -17,8 +17,8 @@ app.post("/addCard", async function (req, res) {
 });
 
 app.get("/cards", async function (req, res) {
-  let cards = await Card.findOne({});
-  res.status(200).json(cards);
+  let cards = await Card.find({});
+  res.status(200).json({ cards: cards });
 });
 
 app.use((err, req, res, next) => {

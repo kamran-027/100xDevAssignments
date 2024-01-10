@@ -6,7 +6,7 @@ export const CreateCard = ({ addCardModal, setAddCardModal }) => {
   const [cardData, setCardData] = useState({
     title: "",
     description: "",
-    interest: "",
+    interests: "",
     linkedin: "",
     twitter: "",
   });
@@ -27,6 +27,7 @@ export const CreateCard = ({ addCardModal, setAddCardModal }) => {
       linkedin: "",
       twitter: "",
     });
+    setAddCardModal(false);
   };
 
   return (
@@ -62,7 +63,10 @@ export const CreateCard = ({ addCardModal, setAddCardModal }) => {
         placeholder="Enter Interests"
         value={cardData.interest}
         onChange={(e) => {
-          setCardData({ ...cardData, interest: e.target.value });
+          const interestsArray = e.target.value
+            .split(",")
+            .map((interest) => interest.trim());
+          setCardData({ ...cardData, interests: interestsArray });
         }}
       />
       <input

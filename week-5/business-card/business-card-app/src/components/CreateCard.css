@@ -7,8 +7,10 @@
   background-color: #92c7cf;
   padding: 1.5rem;
   width: 20%;
-  margin: 7rem auto;
+  margin: 0 36rem;
   border-radius: 5px;
+  position: absolute;
+  z-index: 1000;
 }
 
 .create-card-header {
@@ -26,6 +28,8 @@ textarea {
 }
 .close {
   align-self: flex-end;
+  cursor: pointer;
+  font-weight: bolder;
 }
 
 button {

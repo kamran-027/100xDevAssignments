@@ -58,3 +58,9 @@
   background-color: #2d3250;
   color: white;
 }
+
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}

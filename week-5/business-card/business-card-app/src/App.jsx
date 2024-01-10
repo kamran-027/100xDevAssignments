@@ -1,12 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Card from "./components/Card";
 import { CreateCard } from "./components/CreateCard";
+import axios from "axios";
 
 function App() {
   const [addCardModal, setAddCardModal] = useState(false);
+  const [cardData, setCardData] = useState([]);
+
+  const getCardData = async () => {
+    const resp = await axios.get(`http://localhost:3000/cards`);
+    setCardData(resp.data.cards);
+  };
+
+  useEffect(() => {
+    if (addCardModal == false) {
+      getCardData();
+    }
+  }, [addCardModal]);
 
   return (
     <>
@@ -27,7 +40,12 @@ function App() {
           setAddCardModal={setAddCardModal}
         />
       ) : null}
-      <Card />
+      <div className="card-section">
+        {cardData.map((item, key) => {
+          return <Card key={key} item={item} />;
+        })}
+      </div>
+      {/* <Card /> */}
     </>
   );
 }
