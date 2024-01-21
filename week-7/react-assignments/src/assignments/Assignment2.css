@@ -1,0 +1,53 @@
+.button-container {
+  display: inline-flex;
+  gap: 10px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  justify-self: flex-end;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}
+
+.canvas {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100vh;
+}
+
+button {
+  border-radius: 8px;
+  padding: 2px 14px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.black {
+  background-color: black;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.default {
+  background-color: orange;
+}
